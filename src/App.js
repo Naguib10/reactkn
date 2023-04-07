@@ -1,23 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import Table from './components/Table';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 function App() {
+
+  const [shipments, setShipments] = useState([]);
+
+  async function fetchData() {
+    try {
+      //const response = await axios.get("https://my.api.mockaroo.com/shipments.json?key=5e0b62d0"); //Online
+      const response = await axios.get("shipments.js"); //Offline
+
+      //Adding ids to shipments to be able to delete after editing a shipment
+      response.data.forEach((item, i) => {
+        item._id = i + 1;
+      });
+
+      setShipments(response.data);
+
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [])
+
+  function removeShipment(removedShipment) {
+    setShipments((prev) => prev.filter((shipment) => shipment._id !== removedShipment));
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Table shipments={shipments} removeShipment={removeShipment} />
     </div>
   );
 }
