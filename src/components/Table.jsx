@@ -4,8 +4,8 @@ import TableRow from './TableRow';
 function BasicTable(props) {
 
     return (
-        <Table striped bordered hover>
-            <thead>
+        <Table striped hover>
+            <thead className="bg-black text-white">
                 <tr>
                     <th>ORDERNO</th>
                     <th>DELIVERYDATE</th>

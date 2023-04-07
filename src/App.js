@@ -9,10 +9,13 @@ function App() {
 
   async function fetchData() {
     try {
-      //const response = await axios.get("https://my.api.mockaroo.com/shipments.json?key=5e0b62d0"); //Online
-      const response = await axios.get("shipments.js"); //Offline
+      //Online
+      //const response = await axios.get("https://my.api.mockaroo.com/shipments.json?key=5e0b62d0"); 
 
-      //Adding ids to shipments to be able to delete after editing a shipment
+      //Offline
+      const response = await axios.get("shipments.js");
+
+      //Adding id to shipments to be able to delete after editing a shipment
       response.data.forEach((item, i) => {
         item._id = i + 1;
       });
