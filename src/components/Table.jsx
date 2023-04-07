@@ -1,11 +1,7 @@
 import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/Button';
+import TableRow from './TableRow';
 
 function BasicTable(props) {
-
-    function removeShipment() {
-        props.removeShipment(shipment._id);
-    }
 
     return (
         <Table striped bordered hover>
@@ -18,24 +14,15 @@ function BasicTable(props) {
                     <th>STATUS</th>
                     <th>CONSIGNEE</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 {props.shipments.map((shipment) => {
                     return (
-                        <tr key={shipment._id}>
-                            <td>{shipment.orderNo}</td>
-                            <td>{shipment.date}</td>
-                            <td>{shipment.customer}</td>
-                            <td>{shipment.trackingNo}</td>
-                            <td>{shipment.status}</td>
-                            <td>{shipment.consignee}</td>
-                            <td><Button variant="danger" onClick={removeShipment}>Delete</Button></td>
-                        </tr>
+                        <TableRow key={shipment._id} shipment={shipment} removeShipment={props.removeShipment} />
                     )
-                })
-
-                }
+                })}
 
             </tbody>
         </Table>
