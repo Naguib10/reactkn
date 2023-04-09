@@ -7,8 +7,8 @@ function BasicTable() {
     const shipments = useSelector((state) => state.shipments);
 
     return (
-        <Table striped hover>
-            <thead className="bg-black text-white">
+        <Table hover size="sm">
+            <thead className="table-success">
                 <tr>
                     <th>ORDERNO</th>
                     <th>DELIVERYDATE</th>

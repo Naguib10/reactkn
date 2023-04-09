@@ -11,9 +11,10 @@ function App() {
     dispatch(getShipments());
   }, [dispatch])
 
-
   return (
     <div className="App">
+      <h2>Frontend assessment Task</h2>
+      <p> Please note that this is the <b>"React + Redux + Thunk"</b> option. For the <b>"React only"</b> option please check the <b>main</b> branch on the github repository</p>
       <Table />
     </div>
   );
