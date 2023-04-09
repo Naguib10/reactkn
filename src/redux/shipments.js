@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from 'axios';
 
-const getShipments = createAsyncThunk(
-    'shipmentsList/getShipments', async () => {
+export const getShipments = createAsyncThunk(
+    'getShipments', async () => {
         try {
             const response = await axios.get("shipments.js");
             response.data.forEach((item, i) => {
@@ -21,8 +22,9 @@ export const shipmentsSlice = createSlice({
         shipments: []
     },
     reducers: {
-        delete: (state) => {
-            state.filter((shipment) => shipment._id !== removedShipment);
+        deleteShipment: (state, action) => {
+            state.shipments.filter((shipment) => shipment._id !== action.payload);
+            console.log(state.shipments);
         }
     },
     extraReducers: (builder) => {
@@ -32,9 +34,6 @@ export const shipmentsSlice = createSlice({
     }
 });
 
-// Action creators are generated for each case reducer function
-//export const { increment, decrement, incrementByAmount } = shipmentsSlice.actions;
 
-export const selectShipments = state => state.shipmentsList.shipments;
-
+export const { deleteShipment } = shipmentsSlice.actions;
 export default shipmentsSlice.reducer;

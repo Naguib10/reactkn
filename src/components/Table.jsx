@@ -1,7 +1,10 @@
 import Table from 'react-bootstrap/Table';
 import TableRow from './TableRow';
+import { useSelector } from 'react-redux';
 
-function BasicTable(props) {
+function BasicTable() {
+
+    const shipments = useSelector((state) => state.shipments);
 
     return (
         <Table striped hover>
@@ -18,9 +21,9 @@ function BasicTable(props) {
                 </tr>
             </thead>
             <tbody>
-                {props.shipments.map((shipment) => {
+                {shipments.shipments.map((shipment) => {
                     return (
-                        <TableRow key={shipment._id} shipment={shipment} removeShipment={props.removeShipment} />
+                        <TableRow key={shipment._id} shipment={shipment} />
                     )
                 })}
 

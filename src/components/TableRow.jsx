@@ -18,10 +18,6 @@ function TableRow(props) {
         setShipment(updatedShipment);
     }
 
-    function removeShipment() {
-        props.removeShipment(shipment._id);
-    }
-
     return (
         <tr key={shipment._id}>
             <td>{shipment.orderNo}</td>
@@ -31,7 +27,7 @@ function TableRow(props) {
             <td>{shipment.status}</td>
             <td>{shipment.consignee}</td>
             <td><EditShipment shipment={shipment} update={updateDetails} /></td>
-            <td><ConfirmDel shipment={shipment} remove={removeShipment} /></td>
+            <td><ConfirmDel shipment={shipment} /></td>
         </tr>
     )
 }

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useDispatch } from 'react-redux';
+import { deleteShipment } from '../redux/shipments';
 
 function ConfirmDel(props) {
     const [show, setShow] = useState(false);
@@ -8,8 +10,10 @@ function ConfirmDel(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const dispatch = useDispatch();
+
     function removeShipment() {
-        props.remove(props.id);
+        dispatch(deleteShipment(props.shipment._id));
         handleClose();
     }
 
