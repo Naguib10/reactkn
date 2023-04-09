@@ -14,8 +14,6 @@ function App() {
 
       //Offline
       const response = await axios.get("shipments.js");
-
-      //Adding id to shipments to be able to delete after editing a shipment
       response.data.forEach((item, i) => {
         item._id = i + 1;
       });
@@ -37,6 +35,8 @@ function App() {
 
   return (
     <div className="App">
+      <h2>Frontend Option 1</h2>
+      <p> Please note that this is the <b>"React only"</b> option. For the <b>"React + Redux + Thunk"</b> option please check the <b>redux</b> branch on the github repository</p>
       <Table shipments={shipments} removeShipment={removeShipment} />
     </div>
   );
