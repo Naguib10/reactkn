@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      <h2>Frontend assessment Task</h2>
+      <h2>Frontend Option 2</h2>
       <p> Please note that this is the <b>"React + Redux + Thunk"</b> option. For the <b>"React only"</b> option please check the <b>main</b> branch on the github repository</p>
       <Table />
     </div>
