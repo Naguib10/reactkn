@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import axios from 'axios';
 
 export const getShipments = createAsyncThunk(
@@ -23,8 +23,7 @@ export const shipmentsSlice = createSlice({
     },
     reducers: {
         deleteShipment: (state, action) => {
-            state.shipments.filter((shipment) => shipment._id !== action.payload);
-            console.log(state.shipments);
+            state.shipments = state.shipments.filter((shipment) => shipment._id !== action.payload);
         }
     },
     extraReducers: (builder) => {
